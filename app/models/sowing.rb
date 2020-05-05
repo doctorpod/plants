@@ -1,6 +1,13 @@
 class Sowing < ApplicationRecord
   belongs_to :seed
 
+  def name
+    out = []
+    out << compost_mix unless compost_mix.blank?
+    out << location unless location.blank?
+    out.join(', ')
+  end
+
   def percentage_germinated
     return nil if num_germinated.blank?
 

@@ -46,4 +46,4 @@
 </p>
 
 <%= link_to 'Edit', edit_seed_sowing_path(@seed, @sowing) %> |
-<%= link_to 'Back', seed_sowings_path(@seed) %>
+<%= link_to 'Destroy', [@seed, @sowing], method: :delete, data: { confirm: 'Are you sure?' } %>
