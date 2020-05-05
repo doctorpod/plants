@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_205752) do
+ActiveRecord::Schema.define(version: 2020_05_04_211901) do
 
   create_table "seeds", force: :cascade do |t|
     t.string "name"
     t.date "acquired"
     t.string "source"
     t.date "sow_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sowings", force: :cascade do |t|
+    t.integer "seed_id"
+    t.date "sown_on"
+    t.string "compost_mix"
+    t.string "location"
+    t.text "notes"
+    t.integer "num_sown"
+    t.integer "num_germinated"
+    t.date "first_germinated_on"
+    t.date "potted_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

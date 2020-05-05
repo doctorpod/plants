@@ -1,0 +1,58 @@
+<%= form_with(model: [seed, sowing], local: true) do |form| %>
+  <% if sowing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sowing.errors.count, "error") %> prohibited this sowing from being saved:</h2>
+
+      <ul>
+      <% sowing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :sown_on %>
+    <%= form.date_select :sown_on %>
+  </div>
+
+  <div class="field">
+    <%= form.label :compost_mix %>
+    <%= form.text_field :compost_mix %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_sown %>
+    <%= form.number_field :num_sown %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_germinated %>
+    <%= form.number_field :num_germinated %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_germinated_on %>
+    <%= form.date_select :first_germinated_on %>
+  </div>
+
+  <div class="field">
+    <%= form.label :potted_on %>
+    <%= form.date_select :potted_on %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

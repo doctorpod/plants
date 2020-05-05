@@ -20,5 +20,10 @@
   <%= @seed.sow_by %>
 </p>
 
+<p>
+  <strong>Sowings:</strong>
+  <%= link_to @seed.sowings.count, seed_sowings_path(@seed) %>
+</p>
+
 <%= link_to 'Edit', edit_seed_path(@seed) %> |
 <%= link_to 'Back', seeds_path %>

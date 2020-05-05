@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  sown_on: 2020-05-04
+  compost_mix: MyString
+  location: MyString
+  notes: MyText
+  num_sown: 1
+  num_germinated: 1
+  first_germinated_on: 2020-05-04
+  potted_on: 2020-05-04
+
+two:
+  references: 
+  sown_on: 2020-05-04
+  compost_mix: MyString
+  location: MyString
+  notes: MyText
+  num_sown: 1
+  num_germinated: 1
+  first_germinated_on: 2020-05-04
+  potted_on: 2020-05-04
