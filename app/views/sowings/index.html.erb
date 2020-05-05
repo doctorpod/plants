@@ -27,7 +27,7 @@
         <td><%= sowing.notes %></td>
         <td><%= sowing.num_sown %></td>
         <td><%= sowing.num_germinated %></td>
-        <td><%= (100 * (sowing.num_germinated / sowing.num_sown.to_f)).round %>%</td>
+        <td><%= sowing.percentage_germinated %></td>
         <td><%= sowing.first_germinated_on %></td>
         <td><%= sowing.potted_on %></td>
         <td><%= link_to 'Show', [@seed, sowing] %></td>
