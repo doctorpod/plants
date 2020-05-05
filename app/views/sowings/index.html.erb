@@ -1,28 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sowings for <%= @seed.name %></h1>
-
 <table>
   <thead>
     <tr>
-      <th>Sown on</th>
-      <th>Compost mix</th>
-      <th>Location</th>
+      <th>Name</th>
       <th>Percentage germinated</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @sowings.each do |sowing| %>
       <tr>
-        <td><%= sowing.sown_on %></td>
-        <td><%= sowing.compost_mix %></td>
-        <td><%= sowing.location %></td>
+        <td><%= link_to sowing.name, [@seed, sowing] %></td>
         <td><%= sowing.percentage_germinated %></td>
-        <td><%= link_to 'Show', [@seed, sowing] %></td>
-        <td><%= link_to 'Edit', edit_seed_sowing_path(@seed, sowing) %></td>
-        <td><%= link_to 'Destroy', [@seed, sowing], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,5 +20,4 @@
 
 <br>
 
-<%= link_to 'New Sowing', new_seed_sowing_path %> |
-<%= link_to 'Back', seed_path(@seed) %>
+<%= link_to 'New Sowing', new_seed_sowing_path %>

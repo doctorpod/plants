@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Seeds</h1>
-
 <table>
   <thead>
     <tr>
@@ -10,21 +8,17 @@
       <th>Source</th>
       <th>Sow by</th>
       <th>Sowings</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @seeds.each do |seed| %>
       <tr>
-        <td><%= seed.name %></td>
+        <td><%= link_to seed.name, seed %></td>
         <td><%= seed.acquired %></td>
         <td><%= seed.source %></td>
         <td><%= seed.sow_by %></td>
-        <td><%= link_to seed.sowings.count, seed_sowings_path(seed) %></td>
-        <td><%= link_to 'Show', seed %></td>
-        <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
-        <td><%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= seed.sowings.count %></td>
       </tr>
     <% end %>
   </tbody>
