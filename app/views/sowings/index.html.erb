@@ -8,12 +8,7 @@
       <th>Sown on</th>
       <th>Compost mix</th>
       <th>Location</th>
-      <th>Notes</th>
-      <th>Num sown</th>
-      <th>Num germinated</th>
       <th>Percentage germinated</th>
-      <th>First germinated on</th>
-      <th>Potted on</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,12 +19,7 @@
         <td><%= sowing.sown_on %></td>
         <td><%= sowing.compost_mix %></td>
         <td><%= sowing.location %></td>
-        <td><%= sowing.notes %></td>
-        <td><%= sowing.num_sown %></td>
-        <td><%= sowing.num_germinated %></td>
         <td><%= sowing.percentage_germinated %></td>
-        <td><%= sowing.first_germinated_on %></td>
-        <td><%= sowing.potted_on %></td>
         <td><%= link_to 'Show', [@seed, sowing] %></td>
         <td><%= link_to 'Edit', edit_seed_sowing_path(@seed, sowing) %></td>
         <td><%= link_to 'Destroy', [@seed, sowing], method: :delete, data: { confirm: 'Are you sure?' } %></td>
