@@ -1,3 +1,16 @@
 // Place all the styles related to the seeds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.month-dim, .month-bright {
+  padding: 0.1em;
+  // font-family: 'Courier New', Courier, monospace;
+}
+
+.month-dim {
+  background-color: #ccc;
+}
+
+.month-bright {
+  background-color: #0c0;
+}
