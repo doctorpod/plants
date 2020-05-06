@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Acquired</th>
       <th>Source</th>
+      <th>Sowing months</th>
       <th>Sow by</th>
       <th>Sowings</th>
     </tr>
@@ -17,6 +18,10 @@
         <td><%= link_to seed.name, seed %></td>
         <td><%= seed.acquired %></td>
         <td><%= seed.source %></td>
+        <td>
+          <%= sowing_months(seed.covered_sowing_months) %>,
+          <%= sowing_months(seed.direct_sowing_months) %>
+        </td>
         <td><%= seed.sow_by %></td>
         <td><%= seed.sowings.count %></td>
       </tr>

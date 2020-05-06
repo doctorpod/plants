@@ -69,6 +69,6 @@ class SeedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def seed_params
-      params.require(:seed).permit(:name, :acquired, :source, :sow_by)
+      params.require(:seed).permit(:name, :acquired, :source, :covered_sowing_months, :direct_sowing_months, :sow_by)
     end
 end
