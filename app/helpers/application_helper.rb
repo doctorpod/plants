@@ -11,4 +11,9 @@ module ApplicationHelper
     crumbs << 'Editing' if controller_name == 'sowings' && action_name == 'edit'
     crumbs.join(' / ').html_safe
   end
+
+  def sorter(column_code)
+    [ link_to('&uarr;'.html_safe, seeds_path(sort: "#{column_code}a")),
+      link_to('&darr;'.html_safe, seeds_path(sort: "#{column_code}d")) ].join.html_safe
+  end
 end

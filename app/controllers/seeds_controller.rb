@@ -1,10 +1,11 @@
 class SeedsController < ApplicationController
   before_action :set_seed, only: [:show, :edit, :update, :destroy]
+  before_action :set_sort, only: :index
 
   # GET /seeds
   # GET /seeds.json
   def index
-    @seeds = Seed.all
+    @seeds = Seed.all.order(@sort)
   end
 
   # GET /seeds/1
@@ -70,5 +71,20 @@ class SeedsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def seed_params
       params.require(:seed).permit(:name, :acquired, :source, :covered_sowing_months, :direct_sowing_months, :sow_by)
+    end
+
+    def set_sort
+      sort_clause = {
+        na: 'name ASC',
+        nd: 'name DESC',
+        aa: 'acquired ASC',
+        ad: 'acquired DESC',
+        oa: 'source ASC',
+        od: 'source DESC',
+        sa: 'sow_by ASC',
+        sd: 'sow_by DESC'
+      }
+
+      @sort = sort_clause[params[:sort]&.to_sym]
     end
 end
