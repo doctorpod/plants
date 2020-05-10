@@ -1,11 +1,12 @@
 class SeedsController < ApplicationController
   before_action :set_seed, only: [:show, :edit, :update, :destroy]
   before_action :set_sort, only: :index
+  before_action :set_filter, only: :index
 
   # GET /seeds
   # GET /seeds.json
   def index
-    @seeds = Seed.all.order(@sort)
+    @seeds = Seed.where(session[:where]).order(session[:sort])
   end
 
   # GET /seeds/1
@@ -70,7 +71,7 @@ class SeedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def seed_params
-      params.require(:seed).permit(:name, :acquired, :source, :covered_sowing_months, :direct_sowing_months, :sow_by)
+      params.require(:seed).permit(:name, :acquired, :source, :covered_sowing_months, :direct_sowing_months, :sow_by, :seeds_remaining)
     end
 
     def set_sort
@@ -85,6 +86,24 @@ class SeedsController < ApplicationController
         sd: 'sow_by DESC'
       }
 
-      @sort = sort_clause[params[:sort]&.to_sym]
+      session[:sort] = if params[:sort]
+        sort_clause[params[:sort].to_sym]
+      else
+        session[:sort] || sort_clause[:na]
+      end
+    end
+
+    def set_filter
+      where_clause = {
+        ra: '',
+        rt: 'seeds_remaining IS TRUE',
+        rf: 'seeds_remaining IS FALSE'
+      }
+
+      session[:where] = if params[:filter]
+        where_clause[params[:filter].to_sym]
+      else
+        session[:where] || where_clause[:rt]
+      end
     end
 end
