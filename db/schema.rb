@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_160353) do
+ActiveRecord::Schema.define(version: 2020_05_10_122132) do
 
   create_table "seeds", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_160353) do
     t.datetime "updated_at", null: false
     t.string "direct_sowing_months"
     t.string "covered_sowing_months"
+    t.boolean "seeds_remaining", default: true
   end
 
   create_table "sowings", force: :cascade do |t|
