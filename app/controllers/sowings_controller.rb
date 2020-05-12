@@ -74,6 +74,8 @@ class SowingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sowing_params
-      params.require(:sowing).permit(:references, :sown_on, :compost_mix, :location, :notes, :num_sown, :num_germinated, :first_germinated_on, :potted_on)
+      params
+        .require(:sowing)
+        .permit(:references, :sown_on, :compost_mix, :location, :notes, :num_sown, :num_germinated, :first_germinated_on, :potted_on, :planted_out)
     end
 end

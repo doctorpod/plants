@@ -45,5 +45,10 @@
   <%= @sowing.potted_on %>
 </p>
 
+<p>
+  <strong>Planted out:</strong>
+  <%= @sowing.planted_out %>
+</p>
+
 <%= link_to 'Edit', edit_seed_sowing_path(@seed, @sowing) %> |
 <%= link_to 'Destroy', [@seed, @sowing], method: :delete, data: { confirm: 'Are you sure?' } %>
