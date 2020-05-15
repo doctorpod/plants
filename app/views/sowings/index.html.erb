@@ -3,16 +3,24 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Seed</th>
+      <th>Sown on</th>
+      <th>Compost mix</th>
+      <th>Location</th>
       <th>Percentage germinated</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @sowings.each do |sowing| %>
       <tr>
-        <td><%= link_to sowing.name, [@seed, sowing] %></td>
+        <td><%= link_to sowing.seed.name, sowing.seed %></td>
+        <td><%= sowing.sown_on %></td>
+        <td><%= sowing.compost_mix %></td>
+        <td><%= sowing.location %></td>
         <td><%= sowing.percentage_germinated %></td>
+        <td><%= link_to 'Show', sowing %></td>
       </tr>
     <% end %>
   </tbody>
@@ -20,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Sowing', new_seed_sowing_path %>
+<%= link_to 'New Sowing', new_sowing_path %>

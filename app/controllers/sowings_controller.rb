@@ -1,11 +1,10 @@
 class SowingsController < ApplicationController
-  before_action :set_seed
   before_action :set_sowing, only: [:show, :edit, :update, :destroy]
 
-  # GET /seeds/:seed_id/sowings
-  # GET /seeds/:seed_id/sowings.json
+  # GET /sowings
+  # GET /sowings.json
   def index
-    @sowings = @seed.sowings
+    @sowings = Sowing.all
   end
 
   # GET /sowings/1
@@ -13,23 +12,23 @@ class SowingsController < ApplicationController
   def show
   end
 
-  # GET /seeds/:seed_id/sowings/new
+  # GET /sowings/new
   def new
-    @sowing = @seed.sowings.build
+    @sowing = Sowing.new
   end
 
   # GET /sowings/1/edit
   def edit
   end
 
-  # POST /seeds/:seed:id/sowings
-  # POST /seeds/:seed:id/sowings.json
+  # POST /sowings
+  # POST /sowings.json
   def create
-    @sowing = @seed.sowings.new(sowing_params)
+    @sowing = Sowing.new(sowing_params)
 
     respond_to do |format|
       if @sowing.save
-        format.html { redirect_to [@seed, @sowing], notice: 'Sowing was successfully created.' }
+        format.html { redirect_to @sowing, notice: 'Sowing was successfully created.' }
         format.json { render :show, status: :created, location: @sowing }
       else
         format.html { render :new }
@@ -43,7 +42,7 @@ class SowingsController < ApplicationController
   def update
     respond_to do |format|
       if @sowing.update(sowing_params)
-        format.html { redirect_to [@seed, @sowing], notice: 'Sowing was successfully updated.' }
+        format.html { redirect_to @sowing, notice: 'Sowing was successfully updated.' }
         format.json { render :show, status: :ok, location: @sowing }
       else
         format.html { render :edit }
@@ -57,7 +56,7 @@ class SowingsController < ApplicationController
   def destroy
     @sowing.destroy
     respond_to do |format|
-      format.html { redirect_to seed_sowings_url(@seed), notice: 'Sowing was successfully destroyed.' }
+      format.html { redirect_to sowings_url, notice: 'Sowing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,14 +67,10 @@ class SowingsController < ApplicationController
       @sowing = Sowing.find(params[:id])
     end
 
-    def set_seed
-      @seed = Seed.find(params[:seed_id])
-    end
-
     # Only allow a list of trusted parameters through.
     def sowing_params
       params
         .require(:sowing)
-        .permit(:references, :sown_on, :compost_mix, :location, :notes, :num_sown, :num_germinated, :first_germinated_on, :potted_on, :planted_out)
+        .permit(:seed_id, :sown_on, :compost_mix, :location, :notes, :num_sown, :num_germinated, :first_germinated_on, :potted_on, :planted_out)
     end
 end
