@@ -10,13 +10,14 @@
       <th>Sow by <%= sorter(:s) %></th>
       <th>Seeds remaining? <%= filter_on_boolean(:r) %></th>
       <th>Num. Sowings</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @seeds.each do |seed| %>
       <tr>
-        <td><%= link_to seed.name, seed %></td>
+        <td><%= seed.name %></td>
         <td><%= seed.acquired %></td>
         <td><%= seed.source %></td>
         <td>
@@ -26,6 +27,7 @@
         <td><%= seed.sow_by %></td>
         <td><%= seed.seeds_remaining %></td>
         <td><%= seed.sowings.count %></td>
+        <td><%= link_to 'Show', seed %></td>
       </tr>
     <% end %>
   </tbody>

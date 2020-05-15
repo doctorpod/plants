@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Seed:</strong>
+  <%= @sowing.seed.name %>
+</p>
+
+<p>
   <strong>Sown on:</strong>
   <%= @sowing.sown_on %>
 </p>
@@ -50,5 +55,5 @@
   <%= @sowing.planted_out %>
 </p>
 
-<%= link_to 'Edit', edit_seed_sowing_path(@seed, @sowing) %> |
-<%= link_to 'Destroy', [@seed, @sowing], method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_sowing_path(@sowing) %> |
+<%= link_to 'Destroy', @sowing, method: :delete, data: { confirm: 'Are you sure?' } %>
