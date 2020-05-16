@@ -1,12 +1,31 @@
 class SeedsController < ApplicationController
   before_action :set_seed, only: [:show, :edit, :update, :destroy]
-  before_action :set_sort, only: :index
-  before_action :set_filter, only: :index
 
   # GET /seeds
   # GET /seeds.json
   def index
-    @seeds = Seed.where(session[:where]).order(session[:sort])
+    session[:seeds] ||= {}
+    session[:seeds][:filter] = params[:filter] if params[:filter]
+    session[:seeds][:sort] = params[:sort] if params[:sort]
+
+    sort_scopes = {
+      na: Seed.by_name,
+      nd: Seed.by_name(:desc),
+      aa: Seed.by_acquired,
+      ad: Seed.by_acquired(:desc),
+      oa: Seed.by_source,
+      od: Seed.by_source(:desc),
+      sa: Seed.by_sow_by,
+      sd: Seed.by_sow_by(:desc)
+    }.stringify_keys
+    @seeds = sort_scopes[session[:seeds].symbolize_keys[:sort]] || Seed.by_name
+
+    filter_scopes = {
+      ra: Seed.all,
+      rt: Seed.current,
+      rf: Seed.finished
+    }.stringify_keys
+    @seeds = @seeds.merge(filter_scopes[session[:seeds].symbolize_keys[:filter]] || Seed.all)
   end
 
   # GET /seeds/1
@@ -72,38 +91,5 @@ class SeedsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def seed_params
       params.require(:seed).permit(:name, :acquired, :source, :covered_sowing_months, :direct_sowing_months, :sow_by, :seeds_remaining)
-    end
-
-    def set_sort
-      sort_clause = {
-        na: 'name ASC',
-        nd: 'name DESC',
-        aa: 'acquired ASC',
-        ad: 'acquired DESC',
-        oa: 'source ASC',
-        od: 'source DESC',
-        sa: 'sow_by ASC',
-        sd: 'sow_by DESC'
-      }
-
-      session[:sort] = if params[:sort]
-        sort_clause[params[:sort].to_sym]
-      else
-        session[:sort] || sort_clause[:na]
-      end
-    end
-
-    def set_filter
-      where_clause = {
-        ra: '',
-        rt: 'seeds_remaining IS TRUE',
-        rf: 'seeds_remaining IS FALSE'
-      }
-
-      session[:where] = if params[:filter]
-        where_clause[params[:filter].to_sym]
-      else
-        session[:where] || where_clause[:rt]
-      end
     end
 end
