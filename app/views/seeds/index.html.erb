@@ -9,7 +9,7 @@
       <th>Sowing months</th>
       <th>Sow by <%= sorter(:s) %></th>
       <th>Seeds remaining? <%= filter_on_boolean(:r) %></th>
-      <th>Num. Sowings</th>
+      <th>Num. Growings</th>
       <th></th>
     </tr>
   </thead>
@@ -26,7 +26,7 @@
         </td>
         <td><%= seed.sow_by %></td>
         <td><%= seed.seeds_remaining %></td>
-        <td><%= seed.sowings.count %></td>
+        <td><%= seed.growings.count %></td>
         <td><%= link_to 'Show', seed %></td>
       </tr>
     <% end %>

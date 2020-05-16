@@ -1,0 +1,2 @@
+module GrowingsHelper
+end

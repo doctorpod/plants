@@ -1,5 +1,5 @@
 class Seed < ApplicationRecord
-  has_many :sowings, dependent: :destroy
+  has_many :growings, dependent: :destroy
 
   scope :current, -> { where seeds_remaining: true }
   scope :finished, -> { where seeds_remaining: false }

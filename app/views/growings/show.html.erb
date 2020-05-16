@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Seed:</strong>
+  <%= @growing.seed&.name %>
+</p>
+
+<p>
+  <strong>Plant name:</strong>
+  <%= @growing.plant_name %>
+</p>
+
+<p>
+  <strong>Sown on:</strong>
+  <%= @growing.sown_on %>
+</p>
+
+<p>
+  <strong>Compost mix:</strong>
+  <%= @growing.compost_mix %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @growing.location %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @growing.notes %>
+</p>
+
+<p>
+  <strong>Num sown:</strong>
+  <%= @growing.num_sown %>
+</p>
+
+<p>
+  <strong>Num germinated:</strong>
+  <%= @growing.num_germinated %>
+</p>
+
+<p>
+  <strong>Percentage germinated:</strong>
+  <%= @growing.percentage_germinated %>
+</p>
+
+<p>
+  <strong>First germinated on:</strong>
+  <%= @growing.first_germinated_on %>
+</p>
+
+<p>
+  <strong>Potted on:</strong>
+  <%= @growing.potted_on %>
+</p>
+
+<p>
+  <strong>Planted out:</strong>
+  <%= @growing.planted_out %>
+</p>
+
+<p>
+  <strong>For sale?:</strong>
+  <%= @growing.for_sale %>
+</p>
+
+<%= link_to 'Edit', edit_growing_path(@growing) %> |
+<%= link_to 'Destroy', @growing, method: :delete, data: { confirm: 'Are you sure?' } %>

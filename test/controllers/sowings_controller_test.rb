@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class SowingsControllerTest < ActionDispatch::IntegrationTest
+class GrowingsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @sowing = sowings(:one)
+    @growing = growings(:one)
   end
 
   test "should get index" do
-    get sowings_url
+    get growings_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_sowing_url
+    get new_growing_url
     assert_response :success
   end
 
-  test "should create sowing" do
-    assert_difference('Sowing.count') do
-      post sowings_url, params: { sowing: { compost_mix: @sowing.compost_mix, first_germinated_on: @sowing.first_germinated_on, location: @sowing.location, notes: @sowing.notes, num_germinated: @sowing.num_germinated, num_sown: @sowing.num_sown, potted_on: @sowing.potted_on, references: @sowing.references, sown_on: @sowing.sown_on } }
+  test "should create growing" do
+    assert_difference('Growing.count') do
+      post growings_url, params: { growing: { compost_mix: @growing.compost_mix, first_germinated_on: @growing.first_germinated_on, location: @growing.location, notes: @growing.notes, num_germinated: @growing.num_germinated, num_sown: @growing.num_sown, potted_on: @growing.potted_on, references: @growing.references, sown_on: @growing.sown_on } }
     end
 
-    assert_redirected_to sowing_url(Sowing.last)
+    assert_redirected_to growing_url(Growing.last)
   end
 
-  test "should show sowing" do
-    get sowing_url(@sowing)
+  test "should show growing" do
+    get growing_url(@growing)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_sowing_url(@sowing)
+    get edit_growing_url(@growing)
     assert_response :success
   end
 
-  test "should update sowing" do
-    patch sowing_url(@sowing), params: { sowing: { compost_mix: @sowing.compost_mix, first_germinated_on: @sowing.first_germinated_on, location: @sowing.location, notes: @sowing.notes, num_germinated: @sowing.num_germinated, num_sown: @sowing.num_sown, potted_on: @sowing.potted_on, references: @sowing.references, sown_on: @sowing.sown_on } }
-    assert_redirected_to sowing_url(@sowing)
+  test "should update growing" do
+    patch growing_url(@growing), params: { growing: { compost_mix: @growing.compost_mix, first_germinated_on: @growing.first_germinated_on, location: @growing.location, notes: @growing.notes, num_germinated: @growing.num_germinated, num_sown: @growing.num_sown, potted_on: @growing.potted_on, references: @growing.references, sown_on: @growing.sown_on } }
+    assert_redirected_to growing_url(@growing)
   end
 
-  test "should destroy sowing" do
-    assert_difference('Sowing.count', -1) do
-      delete sowing_url(@sowing)
+  test "should destroy growing" do
+    assert_difference('Growing.count', -1) do
+      delete growing_url(@growing)
     end
 
-    assert_redirected_to sowings_url
+    assert_redirected_to growings_url
   end
 end

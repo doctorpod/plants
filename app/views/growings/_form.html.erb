@@ -1,10 +1,10 @@
-<%= form_with(model: [seed, sowing], local: true) do |form| %>
-  <% if sowing.errors.any? %>
+<%= form_with(model: [seed, growing], local: true) do |form| %>
+  <% if growing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(sowing.errors.count, "error") %> prohibited this sowing from being saved:</h2>
+      <h2><%= pluralize(growing.errors.count, "error") %> prohibited this growing from being saved:</h2>
 
       <ul>
-      <% sowing.errors.full_messages.each do |message| %>
+      <% growing.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -14,7 +14,12 @@
 
   <div class="field">
     <%= form.label :seed_id %>
-    <%= form.collection_select :seed_id, Seed.current.by_name, :id, :name %>
+    <%= form.collection_select :seed_id, Seed.current.by_name, :id, :name, {include_blank: true} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plant_name %>
+    <%= form.text_field :plant_name %>
   </div>
 
   <div class="field">
@@ -60,6 +65,11 @@
   <div class="field">
     <%= form.label :planted_out %>
     <%= form.date_select :planted_out, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :for_sale %>
+    <%= form.check_box :for_sale %>
   </div>
 
   <div class="actions">

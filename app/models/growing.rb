@@ -1,5 +1,5 @@
-class Sowing < ApplicationRecord
-  belongs_to :seed
+class Growing < ApplicationRecord
+  belongs_to :seed, optional: true
 
   def name
     out = []

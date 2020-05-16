@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SowingTest < ActiveSupport::TestCase
+class GrowingTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
