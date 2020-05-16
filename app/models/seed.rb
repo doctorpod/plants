@@ -1,5 +1,13 @@
 class Seed < ApplicationRecord
-  has_many :sowings
+  has_many :sowings, dependent: :destroy
+
+  scope :current, -> { where seeds_remaining: true }
+  scope :finished, -> { where seeds_remaining: false }
+
+  scope :by_name, ->(direction = :asc) { order name: direction }
+  scope :by_acquired, ->(direction = :asc) { order acquired: direction }
+  scope :by_source, ->(direction = :asc) { order source: direction }
+  scope :by_sow_by, ->(direction = :asc) { order sow_by: direction }
 
   validate :validate_sowing_months
 

@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= form.label :seed_id %>
-    <%= form.collection_select :seed_id, Seed.all, :id, :name %>
+    <%= form.collection_select :seed_id, Seed.current.by_name, :id, :name %>
   </div>
 
   <div class="field">
