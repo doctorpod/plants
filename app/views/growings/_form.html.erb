@@ -13,58 +13,13 @@
 
 
   <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, size: 100 %>
+  </div>
+
+  <div class="field">
     <%= form.label :seed_id %>
     <%= form.collection_select :seed_id, Seed.current.by_name, :id, :name, {include_blank: true} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :plant_name %>
-    <%= form.text_field :plant_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sown_on %>
-    <%= form.date_select :sown_on %>
-  </div>
-
-  <div class="field">
-    <%= form.label :compost_mix %>
-    <%= form.text_field :compost_mix %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_area :notes %>
-  </div>
-
-  <div class="field">
-    <%= form.label :num_sown %>
-    <%= form.number_field :num_sown %>
-  </div>
-
-  <div class="field">
-    <%= form.label :num_germinated %>
-    <%= form.number_field :num_germinated %>
-  </div>
-
-  <div class="field">
-    <%= form.label :first_germinated_on %>
-    <%= form.date_select :first_germinated_on, include_blank: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :potted_on %>
-    <%= form.date_select :potted_on, include_blank: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :planted_out %>
-    <%= form.date_select :planted_out, include_blank: true %>
   </div>
 
   <div class="field">

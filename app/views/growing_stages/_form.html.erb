@@ -1,0 +1,64 @@
+<%= form_with(model: growing_stage, local: true) do |form| %>
+  <% if growing_stage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(growing_stage.errors.count, "error") %> prohibited this growing_stage from being saved:</h2>
+
+      <ul>
+      <% growing_stage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :growing_id %>
+
+  <div class="field">
+    <%= form.label :stage_type %>
+    <%= form.select :stage_type, GrowingStage::STAGE_TYPES %>
+  </div>
+
+  <div class="field">
+    <%= form.label :started_on %>
+    <%= form.date_select :started_on %>
+  </div>
+
+  <div class="field">
+    <%= form.label :growing_medium %>
+    <%= form.text_field :growing_medium %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_growth_on %>
+    <%= form.date_select :first_growth_on, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_started %>
+    <%= form.number_field :num_started %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_growing %>
+    <%= form.number_field :num_growing %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_lost %>
+    <%= form.number_field :num_lost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

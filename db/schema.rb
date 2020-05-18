@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_174120) do
+ActiveRecord::Schema.define(version: 2020_05_18_172322) do
+
+  create_table "growing_stages", force: :cascade do |t|
+    t.integer "growing_id"
+    t.string "stage_type"
+    t.date "started_on"
+    t.string "growing_medium"
+    t.string "location"
+    t.date "first_growth_on"
+    t.integer "num_started"
+    t.integer "num_growing"
+    t.integer "num_lost"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["growing_id"], name: "index_growing_stages_on_growing_id"
+  end
 
   create_table "growings", force: :cascade do |t|
     t.integer "seed_id"
@@ -27,6 +43,8 @@ ActiveRecord::Schema.define(version: 2020_05_16_174120) do
     t.date "planted_out"
     t.string "plant_name"
     t.boolean "for_sale", default: false
+    t.string "name"
+    t.index ["name"], name: "index_growings_on_name", unique: true
   end
 
   create_table "seeds", force: :cascade do |t|

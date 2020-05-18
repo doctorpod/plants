@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <nav><%= link_to 'Seeds', seeds_path %> | <%= link_to 'Growings', growings_path %></nav>
+    <nav>
+      <%= link_to 'Growings', growings_path %> |
+      <%= link_to 'Growing stages', growing_stages_path %> |
+      <%= link_to 'Seeds', seeds_path %>
+    </nav>
     <%= yield %>
   </body>
 </html>

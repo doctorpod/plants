@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export RAILS_ENV=production
+export RAILS_SERVE_STATIC_FILES=true
+export SECRET_KEY_BASE=`bundle exec rake secret`
+
+bundle exec rails db:migrate
+bundle exec rails assets:precompile
+bundle exec rails s --port 3005

@@ -71,6 +71,6 @@ class GrowingsController < ApplicationController
     def growing_params
       params
         .require(:growing)
-        .permit(:seed_id, :plant_name, :sown_on, :compost_mix, :location, :notes, :num_sown, :num_germinated, :first_germinated_on, :potted_on, :planted_out, :for_sale)
+        .permit(:seed_id, :name, :for_sale)
     end
 end

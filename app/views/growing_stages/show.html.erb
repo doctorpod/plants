@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Growing stage</h1>
+<p>
+  <strong>Growing:</strong>
+  <%= link_to @growing_stage.growing.name, growing_path(@growing_stage.growing) %>
+</p>
+
+<p>
+  <strong>Stage type:</strong>
+  <%= @growing_stage.stage_type %>
+</p>
+
+<p>
+  <strong>Started on:</strong>
+  <%= @growing_stage.started_on %>
+</p>
+
+<p>
+  <strong>Growing medium:</strong>
+  <%= @growing_stage.growing_medium %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @growing_stage.location %>
+</p>
+
+<p>
+  <strong>First growth on:</strong>
+  <%= @growing_stage.first_growth_on %>
+</p>
+
+<p>
+  <strong>Num started:</strong>
+  <%= @growing_stage.num_started %>
+</p>
+
+<p>
+  <strong>Num growing:</strong>
+  <%= @growing_stage.num_growing %>
+</p>
+
+<p>
+  <strong>Num lost:</strong>
+  <%= @growing_stage.num_lost %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @growing_stage.notes %>
+</p>
+
+<%= link_to 'Edit', edit_growing_stage_path(@growing_stage) %> |
+<%= link_to 'Destroy', @growing_stage, method: :delete, data: { confirm: 'Are you sure?' } %>

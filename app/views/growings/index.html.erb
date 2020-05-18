@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Growings</h1>
 <table>
   <thead>
     <tr>
-      <th>Seed</th>
-      <th>Plant name</th>
-      <th>Sown on</th>
-      <th>Compost mix</th>
-      <th>Location</th>
-      <th>Percentage germinated</th>
+      <th>Name</th>
+      <th>Created on</th>
+      <th>Stages</th>
       <th>For sale?</th>
       <th></th>
     </tr>
@@ -17,12 +15,9 @@
   <tbody>
     <% @growings.each do |growing| %>
       <tr>
-        <td><%= link_to growing.seed.name, growing.seed if growing.seed %></td>
-        <td><%= growing.plant_name %></td>
-        <td><%= growing.sown_on %></td>
-        <td><%= growing.compost_mix %></td>
-        <td><%= growing.location %></td>
-        <td><%= growing.percentage_germinated %></td>
+        <td><%= growing.name %></td>
+        <td><%= growing.created_at.to_date %></td>
+        <td><%= growing.growing_stages.count %></td>
         <td><%= growing.for_sale %></td>
         <td><%= link_to 'Show', growing %></td>
       </tr>
