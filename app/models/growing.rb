@@ -1,12 +1,11 @@
+# An intention to grow a plant or batch of plants
 class Growing < ApplicationRecord
   belongs_to :seed, optional: true
+  has_many :growing_stages, dependent: :destroy
 
-  def name
-    out = []
-    out << compost_mix unless compost_mix.blank?
-    out << location unless location.blank?
-    out.join(', ')
-  end
+  validates :name, presence: true, uniqueness: true
+
+  default_scope { order(:created_at) }
 
   def percentage_germinated
     return nil if num_germinated.blank?

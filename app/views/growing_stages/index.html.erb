@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Growing Stages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Growing</th>
+      <th>Stage type</th>
+      <th>Started on</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @growing_stages.each do |growing_stage| %>
+      <tr>
+        <td><%= growing_stage.growing.name %></td>
+        <td><%= growing_stage.stage_type %></td>
+        <td><%= growing_stage.started_on %></td>
+        <td><%= link_to 'Show', growing_stage %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
